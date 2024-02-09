@@ -1,12 +1,12 @@
-from http import HTTPStatus
-
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets, permissions
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework import filters
 
-from .serializers import PostSerializer, CommentSerializer, GroupSerializer, FollowSerializer
+from .serializers import (PostSerializer, CommentSerializer,
+                          GroupSerializer, FollowSerializer)
+from .exceptions import FollowingExistsError, FollowError
 from posts.models import Post, Group, Follow, User
 
 
@@ -62,15 +62,18 @@ class FollowViewSet(viewsets.ModelViewSet):
     serializer_class = FollowSerializer
     permission_classes = (permissions.IsAuthenticated,)
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('following',)
+    search_fields = ('following__username',)
 
     def get_queryset(self):
         return Follow.objects.filter(user=self.request.user)
 
     def perform_create(self, serializer):
-        if 'following' in self.request.data:
-            following = self.request.data.get('following')
-            if User.objects.filter(username=following).exists():
-                following_user = User.objects.get(username=following)
-                if following_user != self.request.user:
-                    serializer.save(user=self.request.user, following=following_user)
+        following = self.request.data.get('following')
+        following = get_object_or_404(User, username=following)
+        is_exists = self.get_queryset().filter(following=following).exists()
+        if is_exists:
+            raise FollowingExistsError()
+        if following != self.request.user:
+            serializer.save(user=self.request.user, following=following)
+        else:
+            raise FollowError()
