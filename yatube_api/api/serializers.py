@@ -7,13 +7,6 @@ from rest_framework.relations import SlugRelatedField
 from posts.models import Comment, Post, Group, Follow, User
 
 
-class UserSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = User
-        fields = ('username',)
-
-
 class Base64ImageField(serializers.ImageField):
     def to_internal_value(self, data):
         if isinstance(data, str) and data.startswith('data:image'):
