@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
+
 User = get_user_model()
 
 
@@ -22,8 +23,13 @@ class Post(models.Model):
         related_name='posts', blank=True, null=True
     )
 
+    class Meta:
+        ordering = ('pub_date',)
+
     def __str__(self):
-        return self.text
+        return (f'Text: {self.text[:25]}...; '
+                f'Author: {self.author.username}; '
+                f'Pub date: {self.pub_date}.')
 
 
 class Comment(models.Model):
@@ -37,7 +43,9 @@ class Comment(models.Model):
 
 
 class Follow(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='follower'
+    )
     following = models.ForeignKey(
         User, related_name='following', on_delete=models.CASCADE
     )
