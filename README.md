@@ -57,11 +57,9 @@ python3 manage.py runserver
 
 ## Документация для API Yatube
 
-Когда вы запустите проект, по адресу: 
+Когда вы запустите проект, то по адресу: 
 
-```
 http://127.0.0.1:8000/redoc/
-``` 
 
 будет доступна документация для API **Yatube**.  Документация представлена в формате **Redoc**.
 
@@ -72,16 +70,14 @@ http://127.0.0.1:8000/redoc/
 
 Сделайте GET-запрос на адрес:
 
-```
 http://127.0.0.1:8000/api/v1/posts/
-```
 
 Вывод будет таким:
 
 ```json
 [
-    {
-        "id": 0,
+    {    
+	    "id": 0,
 	    "author": "string",
 	    "text": "string",
 	    "pub_date": "2021-10-14T20:41:29.648Z",
@@ -91,3 +87,9 @@ http://127.0.0.1:8000/api/v1/posts/
 ]
 
 ```
+
+## Технологии
+- [Python](https://www.python.org/)
+- [Django REST Framework](https://www.django-rest-framework.org/)
+- [Simple JWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/)
+- [Djoser](https://djoser.readthedocs.io/en/latest/getting_started.html)
