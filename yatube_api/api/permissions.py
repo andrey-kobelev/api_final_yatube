@@ -1,7 +1,7 @@
 from rest_framework import permissions
 
 
-class OnlyAuthorOrSafeMethods(permissions.BasePermission):
+class AuthorOrSafeMethods(permissions.BasePermission):
 
     def has_object_permission(self, request, view, obj):
         return (
