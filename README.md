@@ -1,7 +1,7 @@
 # API Yatube  
 ### Автор
 - Кобелев Андрей Андреевич
-- andrey.pydev@gmail.com
+- [Email](mailto:andrey.pydev@gmail.com)
   
 ---  
 
@@ -91,4 +91,3 @@ http://127.0.0.1:8000/api/v1/posts/
 - [Python](https://www.python.org/)
 - [Django REST Framework](https://www.django-rest-framework.org/)
 - [Simple JWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/)
-- [Djoser](https://djoser.readthedocs.io/en/latest/getting_started.html)
