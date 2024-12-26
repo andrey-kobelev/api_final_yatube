@@ -1,7 +1,6 @@
 # API Yatube  
 ### Автор
-- Кобелев Андрей Андреевич
-- [Email](mailto:andrey.pydev@gmail.com)
+[Kobelev Andrey](https://github.com/andrey-kobelev)
   
 ---  
 
