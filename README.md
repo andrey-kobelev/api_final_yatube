@@ -88,6 +88,6 @@ http://127.0.0.1:8000/api/v1/posts/
 ```
 
 ## Технологии
-- [Python](https://www.python.org/)
+- [Python 3.9](https://www.python.org/downloads/release/python-390/)
 - [Django REST Framework](https://www.django-rest-framework.org/)
 - [Simple JWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/)
